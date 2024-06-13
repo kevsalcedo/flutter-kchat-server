@@ -5,7 +5,7 @@ const User = require("../models/user");
 const { generateJWT } = require("../helpers/jwt");
 
 const createUser = async (req, res = response) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
   try {
     const emailExist = await User.findOne({ email });
@@ -30,7 +30,7 @@ const createUser = async (req, res = response) => {
 
     res.json({
       ok: true,
-      user,
+      usuario: user,
       token,
     });
   } catch (error) {
@@ -89,7 +89,7 @@ const renewToken = async (req, res = response) => {
 
   res.json({
     ok: true,
-    user,
+    usuario: user,
     token
   });
 };
